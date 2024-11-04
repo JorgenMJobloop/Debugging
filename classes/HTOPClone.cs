@@ -6,7 +6,6 @@ public class HTOPClone : IHTOPClone
         Author: https://github.com/jorgenmjobloop
         TODO: Properly utilize the System.Diagnostics namespace to inherit the PerformanceCounter class [error]
               Use Process to implement the MonitorUNIX method
-              Use ManagementObjectSearcher to implement the MonitorWindows method
         /*     
     */
     public void MonitorUNIX()
@@ -20,8 +19,9 @@ public class HTOPClone : IHTOPClone
             CreateNoWindow = true
         };
 
-        using (Process? process = Process.Start(processStartInfo))
+        using (Process process = Process.Start(processStartInfo))
         {
+
             string output = process.StandardOutput.ReadToEnd();
             Console.WriteLine(output);
         }
